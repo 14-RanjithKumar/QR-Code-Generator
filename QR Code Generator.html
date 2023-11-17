@@ -1,0 +1,80 @@
+<!doctype html><html><head><style type="text/css">*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body{
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container{
+  width: 300px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 30px;
+  border-radius: 4px;
+}
+
+.container h4{
+  font-weight: bold;
+}
+
+.container input{
+
+  width: 200px;
+  height: 30px;
+  outline: none;
+  border: 1px solid transparent;
+  box-shadow: 0 0 3px black;
+  padding: 10px;
+  margin: 10px 20px;
+  border-radius: 5px;
+}
+
+.container button{
+  width: 150px;
+  height: 30px;
+  background-color: orange;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.img-container{
+  margin: 30px auto;
+  transition: 0.7s;
+}
+
+.error{
+  border: 1px solid red !important;
+  color: red;
+}</style></head><body><div class="container">
+  <h4>QR Code Generator</h4>
+  <input type="text" placeholder="Enter a text OR URL" id="inputValue"> 
+  <button id="generateBtn">Generate</button>
+  <div class="img-container">
+    <img src="" id="qrImg">
+  </div>
+</div><script type="text/javascript">let inputValue = document.querySelector("#inputValue");
+let generateBtn = document.querySelector("#generateBtn");
+let qrimg = document.querySelector("#qrImg");
+generateBtn.addEventListener('click',generateQRCode);
+
+function generateQRCode(){
+  if (inputValue.value == ''){
+    inputValue.classList.toggle('error');
+  }else{
+    qrimg.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + inputValue.value;
+  }
+}</script></body><html>
